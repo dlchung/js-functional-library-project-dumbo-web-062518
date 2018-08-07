@@ -24,20 +24,45 @@ fi = (function() {
 
     reduce: function (collection, callback, acc) {
       // let sum = acc
-      // for (i = 0; i < collection.length; i++) {
-      //   // debugger
-      //   acc = callback(acc, collection[i], collection)
+
+
+      if (!acc) {
+        acc = 0
+      }
+      // for (const value in collection) {
+      //   acc = callback(acc, collection[value], collection)
       // }
-      for (const value in collection) {
-        acc = callback(acc, collection[value], collection)
+      for (i = 0; i < collection.length; i++) {
+        // debugger
+        acc = callback(acc, collection[i], collection)
       }
 
       return acc
     },
 
+    find: function(collection, predicate){
+      for (const value in collection){
+        if (predicate(collection[value])){
+          return collection[value]
+        }
+      }
+    },
+
+    // filter: function(){
+    //
+    // },
+
+    first: function(array, n){
+      if (n){
+      return array.slice(0, n)
+    }
+    return array[0]
+    },
+
     functions: function () {
 
     }
+
 
   }
 })()
