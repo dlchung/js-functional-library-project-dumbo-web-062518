@@ -5,33 +5,39 @@ fi = (function() {
     },
 
     each: function(collection, alert) {
-
-
-
-      for (const value in collection){
-        debugger
-        alert(collection[value], value, collection);
+      for (const value in collection) {
+        // debugger
+        alert(collection[value], value, collection)
       }
+
       return collection
 
     },
 
-    map: function() {
-
+    map: function (collection, callback) {
+      newArray = []
+      for (const value in collection) {
+        newArray.push(callback(collection[value], value, collection))
+      }
+      return newArray
     },
 
-    reduce: function() {
+    reduce: function (collection, callback, acc) {
+      // let sum = acc
+      // for (i = 0; i < collection.length; i++) {
+      //   // debugger
+      //   acc = callback(acc, collection[i], collection)
+      // }
+      for (const value in collection) {
+        acc = callback(acc, collection[value], collection)
+      }
 
+      return acc
     },
 
-    functions: function() {
+    functions: function () {
 
-    },
-
-    // alert: function() {
-    //   alert("Test")
-    // }
-
+    }
 
   }
 })()
@@ -39,5 +45,3 @@ fi = (function() {
 
 
 fi.libraryMethod()
-
-// fi.each()
