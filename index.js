@@ -22,42 +22,113 @@ fi = (function() {
       return newArray
     },
 
-    reduce: function (collection, callback, acc) {
-      // let sum = acc
-
-
-      if (!acc) {
-        acc = 0
-      }
-      // for (const value in collection) {
-      //   acc = callback(acc, collection[value], collection)
-      // }
-      for (i = 0; i < collection.length; i++) {
-        // debugger
-        acc = callback(acc, collection[i], collection)
-      }
-
-      return acc
-    },
-
-    find: function(collection, predicate){
-      for (const value in collection){
-        if (predicate(collection[value])){
-          return collection[value]
-        }
-      }
-    },
+    // reduce: function (collection, callback, acc) {
+    //   // let sum = acc
+    //
+    //
+    //   if (!acc) {
+    //     acc = 0
+    //   }
+    //   // for (const value in collection) {
+    //   //   acc = callback(acc, collection[value], collection)
+    //   // }
+    //   for (i = 0; i < collection.length; i++) {
+    //     // debugger
+    //     acc = callback(acc, collection[i], collection)
+    //   }
+    //
+    //   return acc
+    // },
+    //
+    // find: function(collection, predicate){
+    //   for (const value in collection){
+    //     if (predicate(collection[value])){
+    //       return collection[value]
+    //     }
+    //   }
+    // },
 
     // filter: function(){
     //
     // },
 
-    first: function(array, n){
-      if (n){
-      return array.slice(0, n)
-    }
-    return array[0]
-    },
+    // first: function(array, n){
+    //   if (n){
+    //   return array.slice(0, n)
+    // }
+    // return array[0]
+    // },
+
+
+    reduce: function (collection, callback, acc) {
+     if (!acc) {
+       acc = 0
+     }
+
+     for (const value in collection) {
+       acc = callback(acc, collection[value], collection)
+     }
+
+     return acc
+   },
+
+   find: function (collection, predicate) {
+     for (const value in collection) {
+       if (predicate(collection[value])) {
+         return collection[value]
+       }
+     }
+   },
+
+   filter: function (collection, predicate) {
+     newArray = []
+     for (const value in collection) {
+       if (predicate(collection[value])) {
+         newArray.push(collection[value])
+       }
+     }
+     return newArray
+   },
+
+   size: function (collection) {
+     return Object.keys(collection).length
+   },
+
+   first: function (array, n) {
+     if (n) {
+       return array.slice(0, n)
+     }
+
+     return array[0]
+   },
+
+   last: function (array, n) {
+     if (n) {
+       return array.slice(-n)
+     }
+
+     return array[array.length - 1]
+   },
+
+   compact: function (array) {
+     newArray = []
+     for (const value in array) {
+       if (array[value]) {
+         newArray.push(array[value])
+       }
+     }
+     return newArray
+   },
+
+   sortBy: function (array, callback) {
+     let newArray = [...array]
+     newArray.sort(function(a, b){
+       return a - b;
+     })
+     debugger
+     return newArray;
+   },
+
 
     functions: function () {
 
