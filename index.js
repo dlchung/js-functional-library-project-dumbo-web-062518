@@ -121,13 +121,20 @@ fi = (function() {
    },
 
    sortBy: function (array, callback) {
-     let newArray = [...array]
-     newArray.sort(function(a, b){
-       return a - b;
-     })
-     debugger
-     return newArray;
+     // let newArray = [...array]
+     // newArray.sort(function(a, b){
+     //   return a - b;
+     // })
+     // debugger
+     // return newArray;
+     let newArray = [];
+     for (var value in array){
+      newArray.push(array[value]);
+    }
+    return newArray.sort(function(a,b){return callback(a)-callback(b)})
+
    },
+
 
 
     functions: function () {
